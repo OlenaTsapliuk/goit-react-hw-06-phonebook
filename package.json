@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-04-hooks-phonebook",
+  "name": "goit-react-hw-06-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://OlenaTsapliuk.github.io/goit-react-hw-04-hooks-phonebook",
+  "homepage": "https://OlenaTsapliuk.github.io/goit-react-hw-06-phonebook",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -12,7 +12,9 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
     "shortid": "^2.2.16",
     "web-vitals": "^1.1.2"
   },
@@ -47,7 +49,8 @@
     "eslint": "^7.32.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "redux-devtools-extension": "^2.13.9"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
