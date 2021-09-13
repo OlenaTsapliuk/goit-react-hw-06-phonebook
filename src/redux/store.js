@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage'
 
 import contactReducer from './reducer';
 
-
+// LocalStorage
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
