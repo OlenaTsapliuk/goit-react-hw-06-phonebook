@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { connect } from 'react-redux';
-import contactActions from '../../redux/action';
-import PropTypes from "prop-types";
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts } from '../../redux/selectors';
+import * as contactActions from '../../redux/action';
 import s from "./ContactForm.module.css";
 
-function ContactForm({onSubmit}) {
+function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  // const contacts = state.contacts.items;
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  
+  const onSubmit = (name, number) =>
+    dispatch(contactActions.addContact(name, number));
+  
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
     switch (name) {
@@ -26,9 +31,11 @@ function ContactForm({onSubmit}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //  if (contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase())) {
-    //   alert(`${name} is already in contacts.`);
-    // } 
+
+    if (contacts.find((contact) =>
+      contact.name.toLowerCase() === name.toLowerCase())) {
+      alert(`${name} is already in contacts.`);
+    } 
   
     onSubmit(name,number)
     resetForm();
@@ -75,17 +82,19 @@ function ContactForm({onSubmit}) {
   }
 
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+// ContactForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
   
-};
+// };
+export default ContactForm;
+
 // const mapStateToProps = state => ({
 //   contacts: state.contacts.items,
 // });
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit:(name,number)=>dispatch(contactActions.addContact(name, number))
-})
+// const mapDispatchToProps = (dispatch) => ({
+//   onSubmit:(name,number)=>dispatch(contactActions.addContact(name, number))
+// })
 
 
-export default connect(null,mapDispatchToProps)(ContactForm);
+// export default connect(null,mapDispatchToProps)(ContactForm);
 
